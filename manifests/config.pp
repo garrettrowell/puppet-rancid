@@ -33,6 +33,7 @@ class rancid::config {
       "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2]/arg[1] \"/rancid\"",
       "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2]/arg[2] '\"/var/www/cgi-bin/viewvc.cgi\"'"
     ],
+    onlyif  => "match /files/etc/httpd/conf/httpd.conf/IfModule[3]/*/*[.='/rancid'] size == 0",
     require => Package['httpd'],
     before => Augeas['viewvc_query_alias'],
   }
@@ -46,6 +47,7 @@ class rancid::config {
       "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2]/arg[1] \"/query\"",
       "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2]/arg[2] '\"/var/www/cgi-bin/query.cgi\"'"
     ],
+    onlyif  => "match /files/etc/httpd/conf/httpd.conf/IfModule[3]/*/*[.='/query'] size == 0",
     require => Package['httpd'],
   }
 
