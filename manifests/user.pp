@@ -7,6 +7,7 @@ class rancid::user {
 
   file { 'rancid_dir':
     ensure  => directory,
+    path    => '/usr/local/rancid/',
     owner   => 'rancid',
     group   => 'netam',
     mode    => '0755',
@@ -19,7 +20,7 @@ class rancid::user {
     name    => 'rancid',
     home    => '/usr/local/rancid',
     groups  => 'apache',
-    require => File['rancid_dir'],
+    before  => File['rancid_dir'],
   }
 
 }

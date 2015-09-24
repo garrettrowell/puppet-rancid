@@ -12,6 +12,7 @@ class rancid (
   $viewvc_rpm = $::rancid::params::viewvc_rpm,
 ) inherits ::rancid::params {
 
+  class { '::rancid::deps': } ->
   class { '::rancid::user': } ->
   class { '::rancid::install': } ->
   class { '::rancid::config': } ~>

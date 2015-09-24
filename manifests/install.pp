@@ -7,23 +7,6 @@ class rancid::install(
   $viewvc_rpm = $::rancid::rancid_rpm
 ) {
 
-  package { 'expect':
-    ensure => present,
-  }
-
-  package { 'cvs':
-    ensure => present,
-  }
-
-  package { 'httpd':
-    ensure => present,
-    before => User['rancid'],
-  }
-
-  package { 'rcs':
-    ensure => present,
-  }
-
   file { 'rancid':
     ensure => present,
     path   => "/tmp/${rancid_rpm}",
