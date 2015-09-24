@@ -9,15 +9,15 @@ class rancid::user {
     ensure  => directory,
     path    => '/usr/local/rancid/',
     owner   => 'rancid',
-    group   => 'netam',
+    group   => 'netadm',
     mode    => '0755',
     recurse => true,
     before  => Package['rancid'],
   }
 
-  user { 'rancid':
+  user { 'netadm':
     ensure  => present,
-    name    => 'rancid',
+    name    => 'netadm',
     home    => '/usr/local/rancid',
     groups  => 'apache',
     before  => File['rancid_dir'],

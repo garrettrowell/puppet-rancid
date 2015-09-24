@@ -4,7 +4,7 @@
 #
 class rancid::install(
   $rancid_rpm = $::rancid::rancid_rpm,
-  $viewvc_rpm = $::rancid::rancid_rpm
+  $viewvc_rpm = $::rancid::viewvc_rpm
 ) {
 
   file { 'rancid':
@@ -22,14 +22,14 @@ class rancid::install(
   package { 'rancid':
     ensure   => installed,
     provider => 'rpm',
-    source   => '/tmp_.rpm',
+    source   => "/tmp/${rancid_rpm}",
     require  => [ File['rancid'], Package['expect'], Package['cvs'], Package['rcs'] ],
   }
 
   package { 'viewvc':
     ensure   => installed,
     provider => 'rpm',
-    source   => '/tmp/_.rpm',
+    source   => "/tmp/${viewvc_rpm}",
     require  => [ File['viewvc'], Package['rancid'], Package['httpd'] ],
   }
 

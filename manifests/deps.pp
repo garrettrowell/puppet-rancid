@@ -14,7 +14,7 @@ class rancid::deps {
 
   package { 'httpd':
     ensure => present,
-    before => User['rancid'],
+    before => User['netadm'],
   }
 
   package { 'rcs':

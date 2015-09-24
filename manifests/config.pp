@@ -28,12 +28,13 @@ class rancid::config {
     incl    => '/etc/httpd/conf/httpd.conf',
     lens    => 'Httpd.lns',
     context => '/files/etc/httpd/conf/httpd.conf',
-    changes => [ "ins directive after /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[1]",
+    changes => [ "ins directive after /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive",
       "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2] \"ScriptAlias\"",
       "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2]/arg[1] \"/rancid\"",
-      "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2]/arg[2] \"\"/var/www/cgi-bin/viewvc.cgi\"\""
+      "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2]/arg[2] '\"/var/www/cgi-bin/viewvc.cgi\"'"
     ],
     require => Package['httpd'],
+    before => Augeas['viewvc_query_alias'],
   }
 
   augeas { 'viewvc_query_alias':
@@ -43,7 +44,7 @@ class rancid::config {
     changes => [ "ins directive after /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[1]",
       "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2] \"ScriptAlias\"",
       "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2]/arg[1] \"/query\"",
-      "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2]/arg[2] \"\"/var/www/cgi-bin/query.cgi\"\""
+      "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2]/arg[2] '\"/var/www/cgi-bin/query.cgi\"'"
     ],
     require => Package['httpd'],
 
