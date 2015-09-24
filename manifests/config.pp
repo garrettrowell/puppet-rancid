@@ -32,7 +32,7 @@ class rancid::config {
       "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2] \"ScriptAlias\"",
       "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2]/arg[1] \"/rancid\"",
       "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2]/arg[2] \"\"/var/www/cgi-bin/viewvc.cgi\"\""
-    ]
+    ],
     require => Package['httpd'],
   }
 
@@ -44,7 +44,7 @@ class rancid::config {
       "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2] \"ScriptAlias\"",
       "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2]/arg[1] \"/query\"",
       "set /files/etc/httpd/conf/httpd.conf/IfModule[3]/directive[2]/arg[2] \"\"/var/www/cgi-bin/query.cgi\"\""
-    ]
+    ],
     require => Package['httpd'],
 
   }
